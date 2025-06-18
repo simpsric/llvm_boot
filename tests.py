@@ -1,29 +1,21 @@
 # tests.py
 
 import unittest
-from functions import get_files_content, get_files_info, write_file
+from functions import get_file_content, get_files_info, write_file, run_python
 
 def test():
-    result = write_file.write_file(
-        working_directory="calculator",
-        file_path="lorem.txt",
-        content="wait, this isn't lorem ipsum"
-    )
-    print(result)  # Expected: Successfully wrote to "subdir/test_file.txt"
+    result = run_python.run_python_file("calculator", "main.py")
+    print(result)
     
-    result = write_file.write_file(
-        working_directory="calculator",
-        file_path="pkg/morelorem.txt",
-        content="lorem ipsum dolor sit amet"
-    )
-    print(result)  # Expected: Successfully wrote to "pkg/morelorem.txt"
+    result = run_python.run_python_file("calculator", "tests.py")
+    print(result)
     
-    result = write_file.write_file(
-        working_directory="calculator",
-        file_path="/tmp/temp.txt",
-        content="this should not work"
-    )
-    print(result)  # Expected: Error: Cannot write to "/tmp/temp.txt" as
+    result = run_python.run_python_file("calculator", "../main.py")
+    print(result)
+    
+    result = run_python.run_python_file("calculator", "nonexistent.py")
+    print(result)
+        
 
 
 if __name__ == "__main__":
